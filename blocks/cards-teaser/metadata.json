@@ -1,0 +1,29 @@
+{
+  "variantName": "cards-teaser",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "list + link + image + heading + text",
+    "purpose": "Image teaser cards with title, date and tag pills for projects and blog posts"
+  },
+  "contentPattern": {
+    "structure": "one row per card: image cell | body cell (linked title, date, optional tag list or an extra cell of comma-separated tags). Alternatively a single link to a listing path (e.g. /blog/) or a \"source | /blog/\" row (plus optional \"limit | 4\") lists pages under that path from /query-index.json, newest first; authored cards always render first"
+  },
+  "options": [
+    {
+      "class": "see-all-card",
+      "label": "See All Card"
+    }
+  ],
+  "memberVariantIds": [
+    "v_3ad39daea42d",
+    "v_9c73427976ee",
+    "v_e428802c73ab"
+  ],
+  "usage": "Default: listing pages (/projects/, /blog/) with the first card featured full width and the rest in 2 columns. see-all-card: homepage teaser grid whose last row is a \"See All\" link rendered as a gradient arrow card.",
+  "reuseGuidance": "Use for project/blog teasers. For the homepage grid add the see-all-card option and author the See All link as the last row."
+}

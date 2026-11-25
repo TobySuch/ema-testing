@@ -1,0 +1,30 @@
+{
+  "variantName": "arcade-game",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "button",
+    "purpose": "Placeholder panel for an interactive arcade game, linking to the playable game on tobysuch.uk"
+  },
+  "contentPattern": {
+    "structure": "row 1 = game key/name (e.g. chess, countdown-numbers); row 2 (optional) = short description; row 3 = link to play the game on the original site (e.g. https://www.tobysuch.uk/arcade/chess/). Optional label cells (game | ..., description | ...) are accepted"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_6a58df5229c2",
+    "v_21c81d3e5749",
+    "v_1a5dbd3cc67b",
+    "v_37ad3a17d604",
+    "v_3f48e75e807f",
+    "v_46509012a591",
+    "v_4aedce80af7f",
+    "v_e1b0cda2fa27",
+    "v_e74f6a0693fe"
+  ],
+  "usage": "Exactly one per arcade game page (/arcade/<game>/). Renders a centred dark panel: \"Coming soon\", game name, description and a \"Play <Game> on tobysuch.uk\" button.",
+  "reuseGuidance": "Use for every arcade game page. Do not re-implement game UI (buttons, tiles, sliders, grids); those catalog variants are folded into this placeholder."
+}

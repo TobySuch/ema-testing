@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,74 +12,36 @@
  * governing permissions and limitations under the License.
  */
 
+/* design tokens live in brand.css */
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 74px;
+}
+
+/* breakpoint-exception: header switches to its single-row layout above 720px (source site) */
+@media (width > 720px) {
+  :root {
+    --nav-height: 78px;
+  }
 }
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: atkinson-fallback;
+  size-adjust: 104%;
   src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
 }
 
 body {
   display: none;
   margin: 0;
+  background: var(--background-gradient);
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.7;
+  overflow-wrap: break-word;
 }
 
 body.appear {
@@ -98,17 +62,18 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* headings */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 0 0 0.5rem;
+  color: var(--heading-color);
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.2;
   scroll-margin: 40px;
 }
 
@@ -119,31 +84,67 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
+/* body copy */
 p,
 dl,
 ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+strong,
+b {
+  font-weight: 700;
 }
 
 code,
 pre {
-  font-size: var(--body-font-size-s);
+  font-family: var(--fixed-font-family);
+}
+
+code {
+  padding: 2px 5px;
+  border-radius: var(--radius-s);
+  background-color: var(--gray-light-color);
 }
 
 pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
+  margin: 20px 0;
+  padding: 1.5em;
+  border-radius: var(--radius-m);
+  background-color: var(--code-block-background-color);
+  color: var(--code-block-text-color);
   overflow-x: auto;
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
+pre > code {
+  padding: 0;
+  font-size: 16px;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+}
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 0 0 20px;
+  border-left: 4px solid var(--accent-color);
+  font-size: 1.333em;
+}
+
+hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid var(--gray-light-color);
+}
+
+table {
+  width: 100%;
 }
 
 input,
@@ -153,19 +154,31 @@ button {
   font: inherit;
 }
 
+input,
+textarea {
+  font-size: 16px;
+}
+
+textarea {
+  width: 100%;
+}
+
 /* links */
 a:any-link {
   color: var(--link-color);
-  text-decoration: none;
-  overflow-wrap: break-word;
+  text-decoration: underline;
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
 }
 
-/* buttons */
+a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* buttons (opt-in: authored bold / italic links, see decorateButtons) */
 p.button-wrapper {
   margin: 12px 0;
 }
@@ -179,109 +192,86 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border-radius: var(--radius-m);
+  padding: 10px 22px;
   font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  line-height: 1.5;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a.button:focus-visible,
+button.button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
 
 a.button[aria-disabled="true"],
 button.button:disabled {
   cursor: not-allowed;
+  opacity: 0.4;
   pointer-events: none;
 }
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+  border-color: var(--accent-dark-color);
+  background-color: var(--accent-dark-color);
+  color: #fff;
 }
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  border-color: var(--accent-color);
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--accent-color);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+  background-color: var(--gray-light-color);
+  color: var(--accent-dark-color);
 }
 
 /* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--black-color);
+  background-color: var(--black-color);
+  color: #fff;
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: var(--accent-color);
+  background-color: var(--accent-color);
 }
 
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
+/* images */
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
+  border-radius: var(--radius-m);
 }
 
 .icon {
@@ -293,33 +283,317 @@ main img {
 .icon img {
   height: 100%;
   width: 100%;
+  border-radius: 0;
 }
 
-/* sections */
+/* sections: text column 720px, blocks 960px (source listing width) */
+main {
+  padding: var(--section-padding) 0;
+}
+
 main > .section {
   margin: 40px 0;
-}
-
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
 }
 
 main > .section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
+main > .section > div {
+  box-sizing: border-box;
+  max-width: var(--listing-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+main > .section > .default-content-wrapper {
+  max-width: var(--content-width);
+}
+
+@media (width > 720px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 20px;
+  }
+
+  /* source main: 720px content box plus 1em side padding */
+  main > .section > .default-content-wrapper {
+    max-width: calc(var(--content-width) + 40px);
   }
 }
 
-/* section metadata */
+/* page titles are centred on the source (home, about, projects, posts) */
+main h1 {
+  text-align: center;
+}
+
+/* home: profile photo paragraph straight after the title, centred, 200px */
+main h1 + p:has(> picture:only-child) {
+  text-align: center;
+}
+
+main h1 + p:has(> picture:only-child) img {
+  width: 200px;
+  border-radius: var(--radius-m);
+}
+
+/* section metadata: style = wide (hero image width) */
+main > .section.wide > div {
+  max-width: var(--wide-width);
+}
+
+/* section metadata: style = centered (article title / date) */
+main .section.centered {
+  text-align: center;
+}
+
+/* section metadata: style = light / highlight */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+  background-color: var(--light-color);
+}
+
+/* page metadata: theme = dark (arcade pages) */
+body.dark {
+  background: var(--dark-background-color);
+  color: var(--dark-text-color);
+}
+
+body.dark main :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--dark-text-color);
+}
+
+body.dark main a:any-link {
+  color: var(--dark-link-color);
+}
+
+/* dark pages: game sections centre their title and intro, as on the source */
+body.dark main h1 {
+  text-align: start;
+}
+
+body.dark main .section.arcade-game-container :is(h1, h1 + p) {
+  text-align: center;
+}
+
+/* game title: the source's text-4xl font-black tracking-tight heading in the system font */
+body.dark main .section.arcade-game-container h1 {
+  font-family: var(--arcade-font-family);
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 40px;
+  letter-spacing: -0.025em;
+}
+
+/* source: 32px between the title area and the game below it */
+body.dark main .section.arcade-game-container > .default-content-wrapper:has(+ :where(.arcade-game-wrapper)) {
+  margin-bottom: 32px;
+}
+
+/* short dark pages (games): keep the footer at the bottom so no navy strip shows below it */
+body.dark.appear {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+body.dark.appear > main {
+  flex: 1 0 auto;
+}
+
+/* dark card listing (arcade index): left-aligned max-w-3xl px-4 header, system font */
+body.dark main > .section.cards-icon-container > .default-content-wrapper {
+  max-width: 768px;
+  padding: 0 16px;
+  font-family: var(--arcade-font-family);
+}
+
+body.dark main .section.cards-icon-container .default-content-wrapper h1 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 40px;
+  letter-spacing: -0.025em;
+}
+
+body.dark main .section.cards-icon-container .default-content-wrapper h1 + p {
+  margin: 8px 0 0;
+  color: var(--dark-muted-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* the site footer keeps its light band on dark pages */
+body.dark footer {
+  background-color: var(--background-color);
+}
+
+/* section metadata: style = dark (arcade navy) */
+main .section.dark {
+  margin: 0;
+  padding: 48px 0;
+  background-color: var(--dark-background-color);
+  color: var(--dark-text-color);
+}
+
+main .section.dark :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--dark-text-color);
+}
+
+main .section.dark a:any-link {
+  color: var(--dark-link-color);
+}
+
+/*
+ * article header (projects, posts, about): first section opening with a
+ * picture-only paragraph (hero), then date line(s), h1, buttons, tag-list.
+ * Source: .hero-image, .title, .date, .last-updated-on, .project-links, hr
+ */
+main > .section:first-of-type > .default-content-wrapper:first-child:has(> p:first-child > picture:only-child) {
+  /* project links are centred; body copy after them is not */
+  &:has(> h1 + .button-wrapper) {
+    text-align: center;
+  }
+
+  > h1 ~ :not(.button-wrapper) {
+    text-align: start;
+  }
+
+  /* hero: up to the wide width, centred, soft shadow */
+  > p:first-child {
+    margin: 0 calc((100% - min(100vw - 32px, var(--wide-width))) / 2) 2em;
+    line-height: 0;
+    text-align: center;
+  }
+
+  > p:first-child img {
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--radius-l);
+    box-shadow: var(--box-shadow);
+  }
+
+  /* date lines between hero and title */
+  > p:not(:first-child):has(~ h1) {
+    margin: 0;
+    color: var(--muted-color);
+    line-height: 1;
+    text-align: center;
+  }
+
+  > p:not(:first-child):has(+ h1) {
+    margin-bottom: 0.5em;
+  }
+
+  /* about: "last updated" line under the title, closes the header */
+  > p:first-child + h1 + p {
+    margin: 0 0 2.5em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid var(--gray-light-color);
+    color: var(--muted-color);
+    font-style: italic;
+    line-height: 1;
+    text-align: center;
+  }
+
+  /* second date line: "last updated" */
+  > p:first-child + p + p:has(+ h1) {
+    margin-top: 0.5em;
+    font-style: italic;
+  }
+
+  > h1 {
+    margin: 0 0 0.5em;
+  }
+
+  > p:first-child + h1 {
+    margin-bottom: 0.25em;
+  }
+
+  /* divider closing the header when no buttons / tag-list follow */
+  > p:not(:first-child) + h1:not(:last-child, :has(+ .button-wrapper)) {
+    margin-bottom: calc(var(--body-font-size-m) * 2.5);
+    padding-bottom: calc(var(--body-font-size-m) * 0.5);
+    border-bottom: 1px solid var(--gray-light-color);
+  }
+
+  /* project links: buttons side by side, centred, small */
+  > h1 ~ p.button-wrapper {
+    display: inline-block;
+    margin: 0 0.375em 0.25em;
+    line-height: 1;
+    vertical-align: top;
+  }
+
+  > h1 ~ p.button-wrapper a.button:any-link {
+    gap: 0.4em;
+    border: 0;
+    border-radius: 6px;
+    padding: 0.45em 1em;
+    font-size: 0.9em;
+    font-weight: 600;
+    line-height: 1;
+    transition: opacity 150ms;
+  }
+
+  > h1 ~ p.button-wrapper a.button:any-link::before {
+    content: '';
+    flex: none;
+    width: 16px;
+    height: 16px;
+    background-color: currentcolor;
+    mask: url('/icons/external-link.svg') center / contain no-repeat;
+  }
+
+  > h1 ~ p.button-wrapper a.button[href*="github.com"]::before {
+    mask-image: url('/icons/github.svg');
+  }
+
+  > h1 ~ p.button-wrapper a.button.primary {
+    background-color: var(--accent-color);
+    color: #fff;
+  }
+
+  > h1 ~ p.button-wrapper a.button.secondary {
+    background-color: var(--gray-dark-color);
+    color: #fff;
+  }
+
+  > h1 ~ p.button-wrapper a.button:hover {
+    opacity: 0.8;
+  }
+
+  /* tag-list straight after the header: text-column width, divider below */
+  + .tag-list-wrapper {
+    max-width: var(--content-width);
+  }
+
+  + .tag-list-wrapper::after {
+    content: '';
+    display: block;
+    margin-bottom: 2.5em;
+    padding-top: 0.5em;
+    border-bottom: 1px solid var(--gray-light-color);
+  }
+}
+
+/* article body copy (source .prose): paragraphs 20px / 40px, lists 20px above and below */
+main > .section:first-of-type:has(> .default-content-wrapper:first-child > p:first-child > picture:only-child) {
+  > .default-content-wrapper:not(:first-child) > p,
+  > .default-content-wrapper:first-child > h1 ~ p:not(.button-wrapper) {
+    margin: 20px 0 40px;
+  }
+
+  > .default-content-wrapper:not(:first-child) > :is(ul, ol),
+  > .default-content-wrapper:first-child > h1 ~ :is(ul, ol) {
+    margin: 20px 0;
+  }
+}
+
+@media (width > 720px) {
+  main > .section:first-of-type > .default-content-wrapper:first-child:has(> p:first-child > picture:only-child) + .tag-list-wrapper {
+    max-width: calc(var(--content-width) + 40px);
+  }
 }

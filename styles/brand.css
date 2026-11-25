@@ -1,0 +1,83 @@
+/*
+ * Brand tokens extracted from https://www.tobysuch.uk/ (Astro blog theme + Tailwind arcade).
+ * Source: migration-work/brand.json
+ */
+
+:root {
+  /* source palette */
+  --accent-color: #2337ff;
+  --accent-dark-color: #000d8a;
+  --black-color: rgb(15 18 25);
+  --gray-color: rgb(96 115 159);
+  --gray-light-color: rgb(229 233 240);
+  --gray-dark-color: rgb(34 41 57);
+  --box-shadow: 0 2px 6px rgb(96 115 159 / 25%), 0 8px 24px rgb(96 115 159 / 33%), 0 16px 32px rgb(96 115 159 / 33%);
+
+  /* semantic colors */
+  --background-color: #fff;
+  --background-gradient: linear-gradient(rgb(229 233 240 / 50%), #fff) no-repeat 0 0 / 100% 600px;
+  --light-color: var(--gray-light-color);
+  --dark-color: var(--gray-dark-color);
+  --text-color: var(--gray-dark-color);
+  --heading-color: var(--black-color);
+  --muted-color: var(--gray-color);
+  --link-color: var(--accent-color);
+  --link-hover-color: var(--accent-color);
+  --code-block-background-color: #24292e;
+  --code-block-text-color: #e1e4e8;
+
+  /* dark (arcade) palette: Tailwind slate */
+  --dark-background-color: oklch(12.9% 0.042 264.695deg);
+  --dark-surface-color: oklch(20.8% 0.042 265.755deg);
+  --dark-border-color: oklch(27.9% 0.041 260.031deg);
+  --dark-text-color: #fff;
+  --dark-muted-color: oklch(70.4% 0.04 256.788deg);
+  --dark-link-color: oklch(70.7% 0.165 254.624deg);
+
+  /* fonts */
+  --body-font-family: atkinson, atkinson-fallback, sans-serif;
+  --heading-font-family: atkinson, atkinson-fallback, sans-serif;
+  --fixed-font-family: monospace;
+  --arcade-font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", "Noto Sans", arial, sans-serif;
+
+  /* body sizes (mobile) */
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+
+  /* heading sizes (mobile): source em scale on an 18px body */
+  --heading-font-size-xxl: 54.94px;
+  --heading-font-size-xl: 43.94px;
+  --heading-font-size-l: 35.15px;
+  --heading-font-size-m: 28.13px;
+  --heading-font-size-s: 22.5px;
+  --heading-font-size-xs: 18px;
+
+  /* layout */
+  --content-width: 720px;
+  --listing-width: 960px;
+  --wide-width: 1020px;
+  --section-padding: 16px;
+  --radius-s: 2px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+}
+
+/* breakpoint-exception: source theme switches typography and padding at 720px */
+@media (width > 720px) {
+  :root {
+    /* body sizes (desktop) */
+    --body-font-size-m: 20px;
+    --body-font-size-s: 18px;
+    --body-font-size-xs: 16px;
+
+    /* heading sizes (desktop): 3.052em / 2.441em / 1.953em / 1.563em / 1.25em on 20px */
+    --heading-font-size-xxl: 61.04px;
+    --heading-font-size-xl: 48.82px;
+    --heading-font-size-l: 39.06px;
+    --heading-font-size-m: 31.26px;
+    --heading-font-size-s: 25px;
+    --heading-font-size-xs: 20px;
+    --section-padding: 60px;
+  }
+}

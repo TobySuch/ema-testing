@@ -1,0 +1,242 @@
+{
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.tobysuch.uk/"
+      ],
+      "description": "Landing page with intro text, featured card teasers and see-all links",
+      "blocks": [
+        {
+          "name": "cards-teaser",
+          "instances": [
+            "body > main > div > section > ul"
+          ],
+          "pageInstances": {
+            "https://www.tobysuch.uk/": [
+              "body > main > div > section:nth-child(1) > ul",
+              "body > main > div > section:nth-child(2) > ul"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "id": "intro-and-latest",
+          "name": "Intro and latest posts",
+          "selector": [
+            "body > main"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            "body > main > h1",
+            "body > main > p",
+            "body > main > div > section > h2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "content-page",
+      "urls": [
+        "https://www.tobysuch.uk/about/",
+        "https://www.tobysuch.uk/blog/protecting-your-django-media/",
+        "https://www.tobysuch.uk/projects/earlybird/",
+        "https://www.tobysuch.uk/projects/shifter/",
+        "https://www.tobysuch.uk/projects/tokenbury/"
+      ],
+      "description": "Article page: large image, centred title, date, body text; used for project pages, blog posts and about",
+      "blocks": [
+        {
+          "name": "tag-list",
+          "instances": [
+            "body > main > article div.prose div.tags"
+          ],
+          "pageInstances": {
+            "https://www.tobysuch.uk/projects/earlybird/": [
+              "body > main > article > div.prose > div > div.tags"
+            ],
+            "https://www.tobysuch.uk/projects/shifter/": [
+              "body > main > article > div.prose > div > div.tags"
+            ],
+            "https://www.tobysuch.uk/projects/tokenbury/": [
+              "body > main > article > div.prose > div > div.tags"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "id": "article",
+          "name": "Article",
+          "selector": [
+            "body > main > article"
+          ],
+          "style": null,
+          "blocks": [
+            "tag-list"
+          ],
+          "defaultContent": [
+            "body > main > article > div.hero-image",
+            "body > main > article > div.prose > div > h1",
+            "body > main > article > div.prose > div > div",
+            "body > main > article > div.prose > p",
+            "body > main > article > div.prose > h2",
+            "body > main > article > div.prose > h3",
+            "body > main > article > div.prose > ul",
+            "body > main > article > div.prose > pre",
+            "body > main > article > div.prose > div.project-links"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "post-listing",
+      "urls": [
+        "https://www.tobysuch.uk/blog/",
+        "https://www.tobysuch.uk/projects/"
+      ],
+      "description": "Listing page of posts (blog posts or projects): a featured card then a grid of image cards with title, date and tags, filled from the posts it lists",
+      "blocks": [
+        {
+          "name": "cards-teaser",
+          "instances": [
+            "body > main > section > ul"
+          ],
+          "pageInstances": {
+            "https://www.tobysuch.uk/projects/": [
+              "body > main"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "id": "listing",
+          "name": "Listing",
+          "selector": [
+            "body > main"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "card-listing",
+      "urls": [
+        "https://www.tobysuch.uk/arcade/"
+      ],
+      "description": "Index page with page title, intro line and a two-column grid of icon cards",
+      "blocks": [
+        {
+          "name": "cards-icon",
+          "instances": [
+            "body > main > ul"
+          ],
+          "pageInstances": {
+            "https://www.tobysuch.uk/arcade/": [
+              "body > main > ul"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "id": "arcade-index",
+          "name": "Arcade index",
+          "selector": [
+            "body > main"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-icon"
+          ],
+          "defaultContent": [
+            "body > main > h1",
+            "body > main > p"
+          ]
+        }
+      ],
+      "pageMetadata": {
+        "Theme": "dark"
+      }
+    },
+    {
+      "name": "game-page",
+      "urls": [
+        "https://www.tobysuch.uk/arcade/chess/",
+        "https://www.tobysuch.uk/arcade/countdown-numbers/",
+        "https://www.tobysuch.uk/arcade/number-of-the-day/",
+        "https://www.tobysuch.uk/arcade/times-table-check/",
+        "https://www.tobysuch.uk/arcade/ultimate-tic-tac-toe/"
+      ],
+      "description": "Full-screen interactive arcade game page: centred title, the game itself (controls, boards, tiles), and an \"← Arcade\" footer link",
+      "blocks": [
+        {
+          "name": "arcade-game",
+          "instances": [
+            "body > astro-island > div > div"
+          ],
+          "pageInstances": {
+            "https://www.tobysuch.uk/arcade/chess/": [
+              "body > astro-island > div > div > div.flex.flex-wrap.justify-center.gap-3",
+              "body > astro-island > div > div > div.w-full.max-w-xs.opacity-40.pointer-events-none.select-none > div",
+              "body > astro-island > div > div > button"
+            ],
+            "https://www.tobysuch.uk/arcade/countdown-numbers/": [
+              "body > astro-island > div > div > div.flex.flex-wrap.items-center.justify-center.gap-3",
+              "body > astro-island > div > div > div.flex.h-28.w-28.items-center.justify-center.rounded-full.border-4.border-red-600.bg-red-900\\/40.text-4xl.font-black.tabular-nums.text-white.shadow-xl.transition-all.duration-500.ease-out.sm\\:h-32.sm\\:w-32.sm\\:text-5xl.scale-100.opacity-100",
+              "body > astro-island > div > div > button.rounded-lg.bg-blue-600.px-8.py-3.text-lg.font-semibold.text-white.transition-colors.cursor-pointer.hover\\:bg-blue-500.focus-visible\\:outline-2.focus-visible\\:outline-offset-2.focus-visible\\:outline-blue-400",
+              "body > astro-island > div > div > button.rounded-lg.border.border-slate-700.px-8.py-3.text-lg.font-semibold.text-slate-300.transition-colors.cursor-pointer.hover\\:border-slate-500.hover\\:text-white.focus-visible\\:outline-2.focus-visible\\:outline-offset-2.focus-visible\\:outline-blue-400"
+            ],
+            "https://www.tobysuch.uk/arcade/number-of-the-day/": [
+              "body > astro-island > div > div > div.flex.items-center.gap-5.rounded-xl.border.border-slate-800.bg-slate-900.px-8.py-4.shadow-lg",
+              "body > astro-island > div > div > div.w-full",
+              "body > astro-island > div > div > button"
+            ],
+            "https://www.tobysuch.uk/arcade/times-table-check/": [
+              "body > astro-island > div > div > div.grid.grid-cols-4.overflow-hidden.rounded-xl.border.border-slate-800",
+              "body > astro-island > div > div > button"
+            ],
+            "https://www.tobysuch.uk/arcade/ultimate-tic-tac-toe/": [
+              "body > astro-island > div > div > div.flex.gap-3",
+              "body > astro-island > div > div > div.w-full.max-w-xs.opacity-40.pointer-events-none.select-none > input",
+              "body > astro-island > div > div > div.w-full.max-w-xs.opacity-40.pointer-events-none.select-none > div",
+              "body > astro-island > div > div > button"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "id": "game",
+          "name": "Game",
+          "selector": [
+            "body > astro-island"
+          ],
+          "style": null,
+          "blocks": [
+            "arcade-game"
+          ],
+          "defaultContent": [
+            "body > astro-island > div > div > h1",
+            "body > astro-island > div > div > div.text-center"
+          ]
+        }
+      ],
+      "pageMetadata": {
+        "Theme": "dark"
+      }
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variantName": "cards-icon",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "list + link + heading + text",
+    "purpose": "Grid of dark bordered cards with an icon, title and description, each linking to an item"
+  },
+  "contentPattern": {
+    "structure": "one row per card: icon cell (image, :icon: or emoji) | body cell (title, usually linked, then description). The first link in the row becomes the link for the whole card"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_ab07659cbdaf"
+  ],
+  "usage": "Arcade index: one card per game with emoji icon, title, description and link.",
+  "reuseGuidance": "Use for linked icon cards on dark sections. Use cards-teaser for image teasers with dates."
+}

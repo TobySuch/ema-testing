@@ -1,0 +1,200 @@
+/* shared teaser card (source listing ul/li/a), stacked and centred up to 720px */
+.cards-teaser .cards-teaser-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-teaser .cards-teaser-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.cards-teaser .cards-teaser-card-link {
+  display: block;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.cards-teaser .cards-teaser-card-link :is(img, .cards-teaser-see-all-hero, .cards-teaser-card-title, .cards-teaser-card-date) {
+  transition: color 0.2s, box-shadow 0.2s;
+}
+
+.cards-teaser .cards-teaser-card-image {
+  display: block;
+  line-height: 0;
+}
+
+.cards-teaser .cards-teaser-card-no-image .cards-teaser-card-image {
+  display: none;
+}
+
+/* source: an inline 720px image; 0.6em stands in for its line-box descender gap */
+.cards-teaser .cards-teaser-card-image img {
+  display: block;
+  width: 720px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto calc(0.5rem + 0.6em);
+  border-radius: 12px;
+  object-fit: fill;
+}
+
+.cards-teaser .cards-teaser-card-title {
+  margin: 0;
+  color: var(--heading-color);
+  font-size: var(--heading-font-size-m);
+  line-height: 1;
+}
+
+.cards-teaser .cards-teaser-card-date {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.cards-teaser .cards-teaser-card-description {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.cards-teaser .cards-teaser-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0.4em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-teaser .cards-teaser-card-tags li {
+  margin: 0;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  font-size: 0.75em;
+}
+
+.cards-teaser .cards-teaser-card-link:is(:hover, :focus-visible) :is(.cards-teaser-card-title, .cards-teaser-card-date) {
+  color: var(--link-color);
+}
+
+.cards-teaser .cards-teaser-card-link:is(:hover, :focus-visible) :is(img, .cards-teaser-see-all-hero) {
+  box-shadow: var(--box-shadow);
+}
+
+.cards-teaser .cards-teaser-fallback {
+  margin: 0;
+}
+
+/* default look: the source listing column has 1em side padding (18px on mobile) */
+.cards-teaser:not(.see-all-card) {
+  margin-inline: -16px;
+  padding-inline: 18px;
+}
+
+/* see-all-card look: homepage teaser grid */
+
+/* source <section>s leave ~2.5rem before the next heading */
+.cards-teaser.see-all-card {
+  margin-bottom: 2.5rem;
+}
+
+.cards-teaser.see-all-card .cards-teaser-card-image {
+  margin-bottom: 1em;
+  line-height: 0;
+}
+
+.cards-teaser.see-all-card .cards-teaser-card-image picture,
+.cards-teaser.see-all-card .cards-teaser-card-image img {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+/* see-all card: gradient arrow hero, coloured by the listing it links to (default: blog) */
+.cards-teaser .cards-teaser-see-all .cards-teaser-see-all-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1em;
+  aspect-ratio: 2;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  color: #fff;
+  line-height: normal;
+}
+
+.cards-teaser .cards-teaser-see-all-projects .cards-teaser-see-all-hero {
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+}
+
+.cards-teaser .cards-teaser-see-all-arrow {
+  display: block;
+  filter: drop-shadow(0 1px 2px #00000040);
+}
+
+.cards-teaser .cards-teaser-see-all-hero picture + .cards-teaser-see-all-arrow {
+  display: none;
+}
+
+/* breakpoint-exception: the source teaser grids switch to 2 columns above 720px */
+@media (width > 720px) {
+  .cards-teaser .cards-teaser-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .cards-teaser .cards-teaser-card {
+    text-align: left;
+  }
+
+  .cards-teaser .cards-teaser-card-tags {
+    justify-content: flex-start;
+  }
+
+  /* default look: first card featured, full width and centred */
+  .cards-teaser .cards-teaser-card-featured {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .cards-teaser .cards-teaser-card-featured .cards-teaser-card-title {
+    font-size: 2.369rem;
+  }
+
+  .cards-teaser .cards-teaser-card-featured .cards-teaser-card-tags {
+    justify-content: center;
+  }
+
+  .cards-teaser:not(.see-all-card) {
+    margin-inline: -20px;
+    padding-inline: 20px;
+  }
+
+  /* same 720px column as the default content beside it */
+  .cards-teaser.see-all-card {
+    max-width: var(--content-width);
+    margin-inline: auto;
+  }
+
+  .cards-teaser.see-all-card .cards-teaser-list {
+    gap: 40px;
+  }
+}
+
+/* breakpoint-exception: the source listing column is 960px plus 1em padding (the section wrapper stops at 960px) */
+@media (width >= 1040px) {
+  .cards-teaser:not(.see-all-card) {
+    margin-inline: -40px;
+  }
+}

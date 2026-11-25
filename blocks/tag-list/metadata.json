@@ -1,0 +1,22 @@
+{
+  "variantName": "tag-list",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "",
+    "purpose": "Row of small grey rounded tag pills"
+  },
+  "contentPattern": {
+    "structure": "tags as a bulleted list, one per row/cell/paragraph, or comma-separated text; linked tags keep their link"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_c112d116b75d"
+  ],
+  "usage": "Post and project pages: the tag row under the title.",
+  "reuseGuidance": "Use for standalone tag rows. Tags inside teaser cards are handled by cards-teaser."
+}
