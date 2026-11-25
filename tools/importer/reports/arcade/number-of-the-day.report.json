@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.tobysuch.uk/arcade/number-of-the-day/",
+  "path": "arcade/number-of-the-day",
+  "timestamp": "2026-11-25T13:08:49.951Z",
+  "title": "Number of the Day",
+  "template": "game-page",
+  "blocks": [
+    "arcade-game",
+    "arcade-game",
+    "arcade-game"
+  ],
+  "importScript": "f83e43bbcf11"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.tobysuch.uk/arcade/",
+  "path": "arcade",
+  "timestamp": "2026-11-25T12:46:04.231Z",
+  "title": "Arcade | Toby Such",
+  "template": "card-listing",
+  "blocks": [
+    "cards-icon"
+  ],
+  "importScript": "77495983825b"
+}

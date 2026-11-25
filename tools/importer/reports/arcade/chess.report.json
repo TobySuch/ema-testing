@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.tobysuch.uk/arcade/chess/",
+  "path": "arcade/chess",
+  "timestamp": "2026-11-25T13:07:34.871Z",
+  "title": "Chess",
+  "template": "game-page",
+  "blocks": [
+    "arcade-game",
+    "arcade-game",
+    "arcade-game"
+  ],
+  "importScript": "f83e43bbcf11"
+}
